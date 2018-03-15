@@ -50,6 +50,8 @@ layer <- setNames(object =  c('23'), ids)
 # source('~/code/neuro-intermorpho/R/functions.r')
 # source('~/code/neuro-intermorpho/R/custom-funs.R')
 library(neuroimm)
+detach('package:neuroimm', unload = TRUE)
+library(neuroimm)
 db_axon <- compute_axon_vars(db, layer, t )
 # db_axon <- add_derived(db_axon)
 # orig <- db_axon
