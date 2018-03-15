@@ -9,6 +9,7 @@ read_json <- function(json) {
 get_features <- function(file) {
  json_branch <- neurostrcpp::compute_branch_features(file)
  branch <- read_json(json_branch)
+ ## extend branch with is terminal etc. could be done initially in neurostrr.
  branch <- neurostrr::extend_branch(branch)
  branch$x <- NULL
  branch$y <- NULL
@@ -17,25 +18,26 @@ get_features <- function(file) {
  node <- read_json(json_node)
  dplyr::left_join(node, branch,  by = c("neuron", "neurite", "neurite_type", "branch", "node"))
 }
+format <- function(db) {
+  db <- neurostrr::convert2lm(db)
+  vars <- colnames(db)
+  vars <- gsub('^node_length$', 'compartment_length', vars)
+  vars <- gsub('^node_root_dist$', 'euclidean_dist', vars)
+  vars <- gsub('^node_root_path$', 'path_dist', vars)
+  vars
+  colnames(db) <- vars
+  db
+}
+compute_features <- function(file) {
+  # get full neuron
+  # format
+  # compute custom
+}
 
-# get full neuron
-
-# debugonce(get_features)
-db <- get_features('/home/bmihaljevic/code/bbp-data/data/BBP_SWC/C030502A.swc')
-head(db, n = 20)
-
-## extend branch with is terminal etc. could be done initially in neurostrr.
 
 # init prepare
 
 # then i can apply convert 2 lm
-db <- neurostrr::convert2lm(db)
-vars <- colnames(db)
-vars <- gsub('^node_length$', 'compartment_length', vars)
-vars <- gsub('^node_root_dist$', 'euclidean_dist', vars)
-vars <- gsub('^node_root_path$', 'path_dist', vars)
-vars
-colnames(db) <- vars
 
 # now i compute variables. add metadata.
 
@@ -78,9 +80,7 @@ db_axon <- add_derived(db_axon)
 # todo vars computation
 ### check: compute_prob_translaminair
 
-
-### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP
-
+### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP. En la fila de NEUROSTRCPP.
 
 # Data
 # - I need to include the metadata somewhere. bbp layer, laminar thickness.

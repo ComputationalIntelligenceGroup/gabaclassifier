@@ -8,3 +8,16 @@
 # }
 # file = '~/test-file.swc'
 # classify(file)
+
+
+# l <- mlr::makeLearner('classif.svm')
+# # l <- mlr::makeLearner('classif.randomForest')
+# smoted <- mlr::makeSMOTEWrapper(l, sw.rate = 2)
+# multi_smoted <- mlr::makeMulticlassWrapper(smoted, mcw.method = 'onevsone')
+# set.seed(0)
+# res <- mlr::benchmark(list(multi_smoted), t, rdesc, show.info = FALSE, measures = list(mlr::acc), keep.pred = TRUE)
+# tbl
+
+# load('~/code/bbp-interneurons-classify/multi-class-model.rdata')
+# devtools::use_data(model, internal = TRUE)
+predict(gabaclassifier:::model, newdata = )
