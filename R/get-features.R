@@ -53,8 +53,10 @@ library(neuroimm)
 detach('package:neuroimm', unload = TRUE)
 library(neuroimm)
 db_axon <- compute_axon_vars(db, layer, t )
-# db_axon <- add_derived(db_axon)
+db_axon <- add_derived(db_axon)
 # orig <- db_axon
+
+# now i just need to classify this cell.
 
 # notes:
 
