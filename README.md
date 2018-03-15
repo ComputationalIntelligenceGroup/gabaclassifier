@@ -28,11 +28,19 @@
     - Si veo que no puedo, pedire ayuda de Mario.  
 
 
-- Calling neuroSTR:
-    - Having the enormous SWC file is probably not pragmatic. I need a single function entry point for a neuron to compute its features. That function will then call NeuroSTR in some way.  
-    - But maybe I do not need the installables of NeuroSTR if I call it for a single SWC. But yeah, the code is called for a single SWC. And it produces a json. But it would be easier to just skip the installable and just get functions directly. Would be much better. 
+    - Calling neuroSTR:
+        - Having the enormous SWC file is probably not pragmatic. I need a single function entry point for a neuron to compute its features. That function will then call NeuroSTR in some way.  
+        - But maybe I do not need the installables of NeuroSTR if I call it for a single SWC. But yeah, the code is called for a single SWC. And it produces a json. But it would be easier to just skip the installable and just get functions directly. Would be much better. 
 
-- Module 2: the model of interneurons. Previously trained model. 
+    - calling neurostr binary requires installing it. also adding my own custom code from the binaries.
+    - get weight, height, etc, per feature. get a json or a vector per neuron. then have to summarize them by arbor. that is done in my own code.
+    - so, basically, i could get the neurostrr output in some format, json or a list of whatever, and then format it with my own code. 
+    - i think it reads json as a single row in a data set 
+    - neurostr add some additional information to the code. I could add this into neurostr. 
+        - basically, neurostr is the hard code 
+        - the neurostr is my r code working on the binaries and input from neurostr 
+
+    - Module 2: the model of interneurons. Previously trained model. 
     - Trained model learned from data. This will be an object, some kind of a model with its parameters set. Or will call for re-learning each time? It could be saved on disc or simply in the package as data, and then re-called whenever I needed this data to re-appear. 
     - Thus, I need to provide this final model. This final model need not be part of the package. But it can be, for transparency. 
 
@@ -42,3 +50,8 @@
 - Module 4 (optional): 
     - Make a shiny interface 
 
+
+- Documentation
+    - pre-requisites: just linux
+    - Vignette describing the process and what is done 
+    - Describe that there are no checks currently
