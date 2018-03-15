@@ -1,6 +1,18 @@
+ # notes:
 
-    If I allow for non rat cells, I will need to omit the laminar features!
-    It is possibly easier to just install the shiny app with the software for computing the stuff on a random swc installed
+# var names identical for modelling to be possible
+  # **fun** <- 'list_branch_usable_measures'
+  # not relevant. extra columns do no harm.
+
+# Issues
+
+### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP. En la fila de NEUROSTRCPP.
+### check: compute_prob_translaminair
+# about a 1000 cells at neuromorpho. use them!!!
+# meta is actually not needed for prediction. maybe i will remove it.
+# licence of blue brain data??? write to epfl people.
+# licence: gpl because of rcpp?
+
 
 - Check for cell quality. Does it have basic characteristics of it? 
 - Could I include neuroSTR headers in an R package? That would not be too hard to achieved. 
@@ -51,7 +63,4 @@
     - Make a shiny interface 
 
 
-- Documentation
-    - pre-requisites: just linux
-    - Vignette describing the process and what is done 
-    - Describe that there are no checks currently
+

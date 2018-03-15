@@ -1,0 +1,26 @@
+---
+title: "GABAergic interneurons classifier"
+author: "Bojan Mihaljevic"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Input 
+- A cell from rat somatosensory cortex. Otherwise, many variables will be useless. Alternative: provide a logical parameter and then omit those features. 
+- The layer containing that cell. Also could be optional. 
+
+# Documentation
+- pre-requisites: just linux
+- Vignette describing the process and what is done 
+- Describe that there are no checks currently

@@ -28,68 +28,25 @@ format <- function(db) {
   colnames(db) <- vars
   db
 }
+add_custom_vars <- function(db, layer) {
+  # now i compute variables. add metadata.
+  ids <- unique(db$neuron)
+  t <- get_layers_thickness()
+  thick <- setNames(t$thickness, t$layer)
+  sds <- setNames(t$thickness_sd, t$layer)
+  inds <- setNames(seq_along(ids), ids)
+  db_axon <- compute_axon_vars(db, layer, t )
+  db_axon <- add_derived(db_axon)
+  # orig <- db_axon
+  db_axon
+
+  # todo: add dendrite vars!!!
+  # todo: add terminal vars!!!
+  # todo: check: no columns missing wrt to the dataset model was trained with. maybe can access it through model object.
+}
 compute_features <- function(file) {
   # get full neuron
   # format
   # compute custom
 }
-
-
-# init prepare
-
-# then i can apply convert 2 lm
-
-# now i compute variables. add metadata.
-
-ids <- unique(db$neuron)
-t <- get_layers_thickness()
-thick <- setNames(t$thickness, t$layer)
-sds <- setNames(t$thickness_sd, t$layer)
-inds <- setNames(seq_along(ids), ids)
-
-layer <- setNames(object =  c('23'), ids)
-
-# source('~/code/neuro-intermorpho/R/functions.r')
-# source('~/code/neuro-intermorpho/R/custom-funs.R')
-library(neuroimm)
-detach('package:neuroimm', unload = TRUE)
-library(neuroimm)
-db_axon <- compute_axon_vars(db, layer, t )
-db_axon <- add_derived(db_axon)
-# orig <- db_axon
-
-# now i just need to classify this cell.
-
-# notes:
-
-# prune:
-# var names identical for modelling to be possible
-# **fun** <- 'list_branch_usable_measures'
-# publishing this will also depend on metadata being available.
-
-
-# **for a new cell, the metadata must be input!!!**
-# that is why that function must change.
-
-# todo tests
-
-# todo: meta is actually not needed for prediction. maybe i will remove it.
-# i just need laminar thickenss data, not meta.
-# licence of blue brain data??? write to epfl people.
-
-# todo vars computation
-### check: compute_prob_translaminair
-
-### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP. En la fila de NEUROSTRCPP.
-
-# Data
-# - I need to include the metadata somewhere. bbp layer, laminar thickness.
-# - It is contained in the final project. Pass it, formatted as data frame, to others. The others depend on its structure but that just so.
-#
-# about a 1000 cells at neuromorpho. use them!!!
-#
-# # pkgs
-# - THere should be a package dedicated just to mapping between gardener and bbp. avoid duplication.
-# - also neurostr to lmeasure mapping package similar to neurostrr
-
 
