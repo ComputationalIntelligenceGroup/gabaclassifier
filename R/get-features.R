@@ -6,7 +6,7 @@ read_json <- function(json) {
   colnames(a) <-  gsub('^measures\\.', '', colnames(a))
   a
 }
-get_features <- function(file) {
+get_neurostr_features <- function(file) {
  json_branch <- neurostrcpp::compute_branch_features(file)
  branch <- read_json(json_branch)
  ## extend branch with is terminal etc. could be done initially in neurostrr.
@@ -44,9 +44,9 @@ add_custom_vars <- function(db, layer) {
   # todo: add terminal vars!!!
   # todo: check: no columns missing wrt to the dataset model was trained with. maybe can access it through model object.
 }
-compute_features <- function(file) {
-  # get full neuron
-  # format
-  # compute custom
+compute_features <- function(file, layer) {
+  db <- get_neurostr_features(file)
+  db <- format(db)
+  db <- format(db)
+  add_custom_vars(db, layer)
 }
-
