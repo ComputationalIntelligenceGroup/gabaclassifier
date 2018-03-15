@@ -28,8 +28,6 @@ head(db, n = 20)
 
 # init prepare
 
-## where do i add metadata?
-
 # then i can apply convert 2 lm
 db <- neurostrr::convert2lm(db)
 vars <- colnames(db)
@@ -39,23 +37,20 @@ vars <- gsub('^node_root_path$', 'path_dist', vars)
 vars
 colnames(db) <- vars
 
-# now i compute variables
+# now i compute variables. add metadata.
 
-system.file("extdata", "2010.csv", package = "testdat")
+ids <- unique(db$neuron)
+t <- get_layers_thickness()
+thick <- setNames(t$thickness, t$layer)
+sds <- setNames(t$thickness_sd, t$layer)
+inds <- setNames(seq_along(ids), ids)
 
-# m <- read_metadata()
-# rownames(m) <- m$id
-# layers <- as.character(m[ids, 'layer'])
-# # get layers thicknesses
-# t <- get_layers_thickness()
-# thick <- setNames(t$thickness, t$layer)
-# sds <- setNames(t$thickness_sd, t$layer)
-# inds <- setNames(seq_along(ids), ids)
+layer <- setNames(object =  c('23'), ids)
 
 # source('~/code/neuro-intermorpho/R/functions.r')
 # source('~/code/neuro-intermorpho/R/custom-funs.R')
 library(neuroimm)
-# db_axon <- compute_axon_vars(db)
+db_axon <- compute_axon_vars(db, layer, t )
 # db_axon <- add_derived(db_axon)
 # orig <- db_axon
 
@@ -72,6 +67,9 @@ library(neuroimm)
 
 # todo tests
 
+# todo: meta is actually not needed for prediction. maybe i will remove it.
+# i just need laminar thickenss data, not meta.
+# licence of blue brain data??? write to epfl people.
 
 # todo vars computation
 ### check: compute_prob_translaminair
@@ -84,7 +82,10 @@ library(neuroimm)
 # - I need to include the metadata somewhere. bbp layer, laminar thickness.
 # - It is contained in the final project. Pass it, formatted as data frame, to others. The others depend on its structure but that just so.
 #
+# about a 1000 cells at neuromorpho. use them!!!
 #
 # # pkgs
 # - THere should be a package dedicated just to mapping between gardener and bbp. avoid duplication.
 # - also neurostr to lmeasure mapping package similar to neurostrr
+
+

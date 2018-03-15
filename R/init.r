@@ -53,3 +53,7 @@
 
 # mlr-helper
 # mlr-extend: sampling method
+
+rm(list = ls())
+detach('package:neuroimm', unload = TRUE)
+library(neuroimm)
