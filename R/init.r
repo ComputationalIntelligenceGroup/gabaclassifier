@@ -1,41 +1,41 @@
-# wd <- getwd()
-setwd('~/code/bbp-interneurons-classify/')
-source('r/init.R')
-setwd('~/code/gabaclassifier/')
-# do parallel here
-
-classifiers <- mods
-dataset <- droplevels(dataset)
-dataset <- standardize(dataset)
-t <- mlr::makeClassifTask(id = 'test', data = dataset, target = 'class')
-measures <- list(mlr::acc)
-rdesc <- mlr::makeResampleDesc("CV", iters = 7, stratify = TRUE)
-sd <- 0
-set.seed(sd)
-res <- mlr::benchmark(classifiers, t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
-res
-
-wrapped <- lapply(classifiers, mlr::makeMulticlassWrapper, mcw.method = 'onevsone')
-# RMLR fails; may it is multinomial
-set.seed(sd)
-resone <- mlr::benchmark(wrapped[-6], t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
-resone
-
-wrapped <- lapply(classifiers, mlr::makeMulticlassWrapper, mcw.method = 'onevsrest')
-set.seed(sd)
-resall <- mlr::benchmark(wrapped[-6], t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
-resall
-
-res
-resone
-resall
-
-# So, basically, my OVA results are no better than these?
-# 60 misclassified
-cm <- table(resone$results$test$RF$pred$data$truth, resone$results$test$RF$pred$data$response)
-specs <- diag(cm) / rowSums(cm)
-round(specs, 2)
-sum(cm) - sum(diag(cm))
+# # wd <- getwd()
+# setwd('~/code/bbp-interneurons-classify/')
+# source('r/init.R')
+# setwd('~/code/gabaclassifier/')
+# # do parallel here
+#
+# classifiers <- mods
+# dataset <- droplevels(dataset)
+# dataset <- standardize(dataset)
+# t <- mlr::makeClassifTask(id = 'test', data = dataset, target = 'class')
+# measures <- list(mlr::acc)
+# rdesc <- mlr::makeResampleDesc("CV", iters = 7, stratify = TRUE)
+# sd <- 0
+# set.seed(sd)
+# res <- mlr::benchmark(classifiers, t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
+# res
+#
+# wrapped <- lapply(classifiers, mlr::makeMulticlassWrapper, mcw.method = 'onevsone')
+# # RMLR fails; may it is multinomial
+# set.seed(sd)
+# resone <- mlr::benchmark(wrapped[-6], t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
+# resone
+#
+# wrapped <- lapply(classifiers, mlr::makeMulticlassWrapper, mcw.method = 'onevsrest')
+# set.seed(sd)
+# resall <- mlr::benchmark(wrapped[-6], t, rdesc, show.info = FALSE, measures = measures, keep.pred = TRUE, models = FALSE)
+# resall
+#
+# res
+# resone
+# resall
+#
+# # So, basically, my OVA results are no better than these?
+# # 60 misclassified
+# cm <- table(resone$results$test$RF$pred$data$truth, resone$results$test$RF$pred$data$response)
+# specs <- diag(cm) / rowSums(cm)
+# round(specs, 2)
+# sum(cm) - sum(diag(cm))
 
 # load the data set
 # combine the classifiers

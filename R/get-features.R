@@ -9,6 +9,7 @@ read_json <- function(json) {
 get_features <- function(file) {
  json_branch <- neurostrcpp::compute_branch_features(file)
  branch <- read_json(json_branch)
+ branch <- neurostrr::extend_branch(branch)
  branch$x <- NULL
  branch$y <- NULL
  branch$z <- NULL
@@ -27,6 +28,8 @@ head(db, n = 20)
 
 # init prepare
 
+## where do i add metadata?
+
 # then i can apply convert 2 lm
 db <- neurostrr::convert2lm(db)
 vars <- colnames(db)
@@ -36,8 +39,52 @@ vars <- gsub('^node_root_path$', 'path_dist', vars)
 vars
 colnames(db) <- vars
 
+# now i compute variables
+
+system.file("extdata", "2010.csv", package = "testdat")
+
+# m <- read_metadata()
+# rownames(m) <- m$id
+# layers <- as.character(m[ids, 'layer'])
+# # get layers thicknesses
+# t <- get_layers_thickness()
+# thick <- setNames(t$thickness, t$layer)
+# sds <- setNames(t$thickness_sd, t$layer)
+# inds <- setNames(seq_along(ids), ids)
+
+# source('~/code/neuro-intermorpho/R/functions.r')
+# source('~/code/neuro-intermorpho/R/custom-funs.R')
+library(neuroimm)
+# db_axon <- compute_axon_vars(db)
+# db_axon <- add_derived(db_axon)
+# orig <- db_axon
+
 # notes:
 
 # prune:
 # var names identical for modelling to be possible
 # **fun** <- 'list_branch_usable_measures'
+# publishing this will also depend on metadata being available.
+
+
+# **for a new cell, the metadata must be input!!!**
+# that is why that function must change.
+
+# todo tests
+
+
+# todo vars computation
+### check: compute_prob_translaminair
+
+
+### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP
+
+
+# Data
+# - I need to include the metadata somewhere. bbp layer, laminar thickness.
+# - It is contained in the final project. Pass it, formatted as data frame, to others. The others depend on its structure but that just so.
+#
+#
+# # pkgs
+# - THere should be a package dedicated just to mapping between gardener and bbp. avoid duplication.
+# - also neurostr to lmeasure mapping package similar to neurostrr
