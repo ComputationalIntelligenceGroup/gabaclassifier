@@ -14,7 +14,6 @@ test_that("Compute features for a neuron not in trainig data", {
 # TODO
 })
 
-
 test_that("Classify", {
   file <- '/home/bmihaljevic/code/bbp-data/data/BBP_SWC/C030502A.swc'
   # todo: put this inside

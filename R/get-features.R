@@ -26,6 +26,9 @@ format <- function(db) {
   vars <- gsub('^node_root_path$', 'path_dist', vars)
   vars
   colnames(db) <- vars
+
+
+
   db
 }
 add_custom_vars <- function(db, layer) {
