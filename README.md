@@ -9,6 +9,7 @@
 ### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP. En la fila de NEUROSTRCPP.
 ### check: compute_prob_translaminair
 # about a 1000 cells at neuromorpho. use them!!!
+  computed at /code/bbp-data/json/neurostr-current2
 # meta is actually not needed for prediction. maybe i will remove it.
 # licence of blue brain data??? write to epfl people.
 # licence: gpl because of rcpp?
