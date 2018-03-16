@@ -12,9 +12,10 @@
   computed at /code/bbp-data/json/neurostr-current2
 # meta is actually not needed for prediction. maybe i will remove it.
 # licence of blue brain data??? write to epfl people.
-# licence: gpl because of rcpp?
+# licence: gpl because of rcpp? 
 
-
+# TODO uncomment above
+  
 - Check for cell quality. Does it have basic characteristics of it? 
 - Could I include neuroSTR headers in an R package? That would not be too hard to achieved. 
 - It could be called NeuroSTR+. It could have all the things together.  

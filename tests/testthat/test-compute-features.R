@@ -3,7 +3,7 @@ test_that("Compute features nominal", {
   # todo: put this inside
   layer <- setNames(object =  c('23'), 'C030502A.swc')
   db <- compute_features(file, layer)
-  expect_equal(dim(db), c(1, 291))
+  expect_equal(dim(db), c(1, 266))
 })
 
 
