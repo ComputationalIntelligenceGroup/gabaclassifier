@@ -1,3 +1,8 @@
+classify_interneuron<- function(file, layer) {
+  db <- compute_features(file, layer)
+  model <- gabaclassifier:::model
+  predict(model, db)
+}
 # classify <- function(file) {
 #   # read swc. I need neurostr for this?
 #   # call neurostr to get some output. just pass it the path. here i am using the neurostr executable files. so, one would need them installed.

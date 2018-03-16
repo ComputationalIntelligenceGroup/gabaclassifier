@@ -24,3 +24,27 @@ knitr::opts_chunk$set(
 - pre-requisites: just linux
 - Vignette describing the process and what is done 
 - Describe that there are no checks currently
+
+# Model 
+An one-versus-all combination of random forest models. We also tried a straghtforward random forest. Could we select one just like that?
+
+The accuracy is 70%. Show the confusion matrix. Simple RF is 71% accuracy. No improvement. Did we also do oversampling? Mention the original paper or not?
+0.7188940 plain random forest without any sampling or anything. The data and model building is explained in paper...
+
+
+# Overview
+- Input
+- Checks
+- Compute features
+- Classify 
+
+# Usage 
+
+```{r}
+library(gabaclassifier)
+path <- ''
+layer <- '23'
+classify_interneuron(path, layer )
+```
+Allowed values for layer are...(character)
+The types are MC = martinotti etc. ...  

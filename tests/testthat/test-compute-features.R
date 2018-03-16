@@ -13,3 +13,11 @@ test_that("Compute features for multiple neurons", {
 test_that("Compute features for a neuron not in trainig data", {
 # TODO
 })
+
+
+test_that("Classify", {
+  file <- '/home/bmihaljevic/code/bbp-data/data/BBP_SWC/C030502A.swc'
+  # todo: put this inside
+  layer <- setNames(object =  c('23'), 'C030502A.swc')
+  classify_interneuron(file, layer)
+})
