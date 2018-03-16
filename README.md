@@ -14,7 +14,12 @@
 # licence of blue brain data??? write to epfl people.
 # licence: gpl because of rcpp? 
 
-# TODO uncomment above
+- copy code form neurostrrr to neuroimm: e.g., neurostrr::extend_xyz
+- one thing is client, another thing is my extravariables. or add that to neurostr. 
+
+# todo: check: no columns missing wrt to the dataset model was trained with. maybe can access it through model object.
+
+# TODO uncomment above in format_variables
   
 - Check for cell quality. Does it have basic characteristics of it? 
 - Could I include neuroSTR headers in an R package? That would not be too hard to achieved. 

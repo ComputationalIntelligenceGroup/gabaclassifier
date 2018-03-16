@@ -17,26 +17,27 @@ knitr::opts_chunk$set(
 ```
 
 # Input 
-- A cell from rat somatosensory cortex. Otherwise, many variables will be useless. Alternative: provide a logical parameter and then omit those features. 
-- The layer containing that cell. Also could be optional. 
+- A SWC/**ASC/DAT** reconstruction of a neuron morphology
+- The layer containing that cell [optional]  [**not done yet**]
 
-# Documentation
-- pre-requisites: just linux
-- Vignette describing the process and what is done 
-- Describe that there are no checks currently
+The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` does not perform any checks.
+
+# Installing 
+
+It is straightforward from Github. `gabaclassifier` requires  `neuroimm`, `neurostrr` to be installed from Github. 
+
+```{r, eval = FALSE}
+devtool::install_github()
+devtool::install_github()
+```
+
+Currently it only **works on linux.** 
 
 # Model 
-An one-versus-all combination of random forest models. We also tried a straghtforward random forest. Could we select one just like that?
+A random forest trained on 217 ... 
 
-The accuracy is 70%. Show the confusion matrix. Simple RF is 71% accuracy. No improvement. Did we also do oversampling? Mention the original paper or not?
-0.7188940 plain random forest without any sampling or anything. The data and model building is explained in paper...
-
-
-# Overview
-- Input
-- Checks
-- Compute features
-- Classify 
+An one-versus-all combination of random forest models provides somewhat better models for under-represented types. The accuracy is 72%. **Show the confusion matrix.**
+The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    
 
 # Usage 
 
@@ -44,7 +45,10 @@ The accuracy is 70%. Show the confusion matrix. Simple RF is 71% accuracy. No im
 library(gabaclassifier)
 path <- ''
 layer <- '23'
-classify_interneuron(path, layer )
+# classify_interneuron(path, layer )
 ```
 Allowed values for layer are...(character)
-The types are MC = martinotti etc. ...  
+The types are MC = martinotti etc. ...   
+
+# Future work  
+- Basic morphology checks, such as axonal length, to perform before classifying an interneuron. 

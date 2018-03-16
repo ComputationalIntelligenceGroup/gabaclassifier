@@ -39,10 +39,8 @@ add_custom_vars <- function(db, layer) {
   db_axon <- add_derived(db_axon)
   # orig <- db_axon
   db_axon
-
   # todo: add dendrite vars!!!
   # todo: add terminal vars!!!
-  # todo: check: no columns missing wrt to the dataset model was trained with. maybe can access it through model object.
 }
 format_vars <- function(db) {
   ind_vert <- grep('vertical', colnames(db))
