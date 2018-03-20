@@ -34,7 +34,13 @@ devtool::install_github()
 Currently it only **works on linux.** 
 
 # Model 
+
+## Data 
 A random forest trained on 217 ... 
+
+- length? flat z? repetitions? 
+- check apical? makes any sense? 
+- minimum number of dendrites? that soma is present? 
 
 An one-versus-all combination of random forest models provides somewhat better models for under-represented types. The accuracy is 72%. **Show the confusion matrix.**
 The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    

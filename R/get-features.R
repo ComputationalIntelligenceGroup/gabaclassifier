@@ -1,8 +1,6 @@
 # this shoudl replace neurostrr:::read_branch
 read_json <- function(json) {
-  a <- jsonlite::fromJSON(json)
-  cols <- setdiff(colnames(a), 'measures')
-  a <- cbind(a[, cols], a$measures)
+  a <- neurostrcpp::json2dataframe(json)
   colnames(a) <-  gsub('^measures\\.', '', colnames(a))
   a
 }
