@@ -33,8 +33,8 @@ add_custom_vars <- function(db, layer) {
   thick <- setNames(t$thickness, t$layer)
   sds <- setNames(t$thickness_sd, t$layer)
   inds <- setNames(seq_along(ids), ids)
-  db_axon <- compute_axon_vars(db, layer, t )
-  db_axon <- add_derived(db_axon)
+  db_axon <- neuroimm::compute_axon_vars(db, layer, t )
+  db_axon <- neuroimm::add_derived(db_axon)
   # orig <- db_axon
   db_axon
   # todo: add dendrite vars!!!
