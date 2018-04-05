@@ -1,4 +1,10 @@
- # notes:
+# WHAT 
+
+- gabaquantify. includes gaba check.  
+- gabaclassify 
+- documentation of the process  
+
+# notes:
 
 # var names identical for modelling to be possible
   # **fun** <- 'list_branch_usable_measures'
