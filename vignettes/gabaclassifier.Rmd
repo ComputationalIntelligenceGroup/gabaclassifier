@@ -16,11 +16,18 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Input 
-- A SWC/**ASC/DAT** reconstruction of a neuron morphology
-- The layer containing that cell [optional]  [**not done yet**]
+# Overview 
 
-The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` does not perform any checks.
+`gabaclassifier` classifies a given neuronal morphology into of of the following types: Chandelier, Martinotti, ...  It is simple to use. 
+
+```{r}
+library(gabaclassifier)
+path <- 'neuron.swc'
+layer <- '23'
+# classify_interneuron(path, layer )
+```
+
+The arguments are explained below. 
 
 # Installing 
 
@@ -29,14 +36,19 @@ It is straightforward from Github. `gabaclassifier` requires  `neuroimm`, `neuro
 ```{r, eval = FALSE}
 devtool::install_github()
 devtool::install_github()
-```
+``` 
+It has only been tested on Ubuntu 16.04. 
 
-Currently it only **works on linux.** 
+# Input 
+- A SWC/**ASC/DAT** reconstruction of a neuron morphology
+- The layer containing that cell [optional]  [**not done yet**]
 
+The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks.
+  
 # Model 
 
 ## Data 
-A random forest trained on 217 ... 
+A random forest trained on **650** ...  The cells were classified into Ch, MC, by the Markam laboratory. 
 
 - length? flat z? repetitions? 
 - check apical? makes any sense? 
@@ -46,15 +58,11 @@ An one-versus-all combination of random forest models provides somewhat better m
 The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    
 
 # Usage 
+The only relevant functions is the `classify_interneuron`. The layer and path to file. The outut types are ... 
 
-```{r}
-library(gabaclassifier)
-path <- ''
-layer <- '23'
-# classify_interneuron(path, layer )
-```
 Allowed values for layer are...(character)
 The types are MC = martinotti etc. ...   
 
 # Future work  
-- Basic morphology checks, such as axonal length, to perform before classifying an interneuron. 
+- **Basic morphology checks, such as axonal length, to perform before classifying an interneuron.** 
+- Output confidence in prediction? 

@@ -3,6 +3,7 @@
 - gabaquantify. includes gaba check.  
 - gabaclassify 
 - documentation of the process  
+- layer cannot be optional because it is in the models already!! nothing is optional. 
 
 # notes:
 

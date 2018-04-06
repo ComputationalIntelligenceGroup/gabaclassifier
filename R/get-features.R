@@ -33,6 +33,7 @@ add_custom_vars <- function(db, layer) {
 }
 compute_features <- function(file, layer) {
   db <- get_neurostr_features(file)
+  # todo: custom vars should not depend on format!! by take neurostr as input directly.
   db <- format_neurostr(db)
   db <- add_custom_vars(db, layer)
   format_vars(db)
