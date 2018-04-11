@@ -10,6 +10,7 @@ format_neurostr <- function(db) {
   db
 }
 
+# TODO: move to neurostrr
 format_vars <- function(db) {
   ind_vert <- grep('vertical', colnames(db))
   # stopifnot(length(ind_vert) == 4)
