@@ -64,6 +64,12 @@ The only relevant functions is the `classify_interneuron`. The layer and path to
 Allowed values for layer are...(character)
 The types are MC = martinotti etc. ...   
 
+Not all morphologies are valid and basic checks are performed.  Thus, 
+```{r}
+
+```
+
+
 # Future work  
 - **Basic morphology checks, such as axonal length, to perform before classifying an interneuron.** 
 - Output confidence in prediction? 

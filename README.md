@@ -17,6 +17,7 @@
   # not relevant. extra columns do no harm.
 
 # Issues
+- **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
  - apply theta_complement?
 - Update description
 - Poner detalles sobre el modelo y su accuracy
