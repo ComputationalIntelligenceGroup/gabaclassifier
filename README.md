@@ -14,6 +14,9 @@
 # Issues
 - **Quitar metadata de aqui, tb por el asunto de licencia**
 - NeuroSTR: the expanded path bug
+- Add morphology validation and checks. Filters for not suitable. 
+- Anadir neuronas de ejemplo 
+- Anadir vignette con ejemplos de uso 
 
 ### CORREGIR EL NOMBRE DE LA NEURON EN NEUROSTRCPP. En la fila de NEUROSTRCPP.
 ### check: compute_prob_translaminair

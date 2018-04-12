@@ -7,7 +7,9 @@ test_that("vector2df", {
 })
 
 test_that("Classify", {
-  file <- '/home/bmihaljevic/code/bbp-data/data/BBP_SWC/C030502A.swc'
+  # file <- '/home/bmihaljevic/code/bbp-data/data/BBP_SWC/'
+  file <- system.file('extdata', 'C030502A.swc', package = 'gabaclassifier')
   layer <- '23'
-  classify_interneuron(file, layer)
+  class <- classify_interneuron(file, layer)
+  expect_equal(as.character(class), 'NBC')
 })
