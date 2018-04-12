@@ -18,35 +18,35 @@ knitr::opts_chunk$set(
 
 # Overview 
 
-`gabaclassifier` classifies a given neuronal morphology into of of the following types: Chandelier, Martinotti, ...  It is simple to use. 
+`gabaclassifier` classifies a given neuronal morphology into of of the following types: 
 
-```{r}
-library(gabaclassifier)
-path <- 'neuron.swc'
-layer <- '23'
-# classify_interneuron(path, layer )
+```{r, message=FALSE}
+library(gabaclassifier) 
+file <- system.file('extdata', 'C030502A.swc', package = 'gabaclassifier')
+classify_interneuron(file = file, layer  = '23')
 ```
 
-The arguments are explained below. 
 
-# Installing 
 
-It is straightforward from Github. `gabaclassifier` requires  `neuroimm`, `neurostrr` to be installed from Github. 
-
-```{r, eval = FALSE}
-devtool::install_github()
-devtool::install_github()
-``` 
-It has only been tested on Ubuntu 16.04. 
-
-# Input 
+# Input and output 
 - A SWC/**ASC/DAT** reconstruction of a neuron morphology
 - The layer containing that cell [optional]  [**not done yet**]
 - Must not be layer 1, only 23. 
 
 The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks.
+
+Try with l1. Only support L2/3 to L6 interneurons so only those layers are allowed.  
+
+The class if classified into on of the following types. That is, considered the most likely out of those. 
+
+Chandelier, Martinotti, ...  It is simple to use. 
+
+# Details
+
   
 # Model 
+
+X.. cells from L23 to L6...
 
 ## Data 
 A random forest trained on **650** ...  The cells were classified into Ch, MC, by the Markam laboratory. 
@@ -58,6 +58,8 @@ A random forest trained on **650** ...  The cells were classified into Ch, MC, b
 An one-versus-all combination of random forest models provides somewhat better models for under-represented types. The accuracy is 72%. **Show the confusion matrix.**
 The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    
 
+TODO: full_class function. names. have it somewhere for sure.
+
 # Usage 
 The only relevant functions is the `classify_interneuron`. The layer and path to file. The outut types are ... 
 
@@ -68,8 +70,4 @@ Not all morphologies are valid and basic checks are performed.  Thus,
 ```{r}
 
 ```
-
-
-# Future work  
-- **Basic morphology checks, such as axonal length, to perform before classifying an interneuron.** 
-- Output confidence in prediction? 
+ 

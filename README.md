@@ -2,16 +2,28 @@
 - gabaclassify 
 - includes gaba check.  
 - documentation of the process  
-- layer cannot be optional because it is in the models already!! nothing is optional.   
 
-# INSTALL 
+# Give example of classifying 
+
+# Installing  
+It is straightforward from Github. `gabaclassifier` requires  `neuroimm`, `neurostrr` to be installed from Github. 
 - DEPENDS ON PKG neurostrplus and neurostr. 
 - Intstall those via github   
+
+```{r, eval = FALSE}
+devtool::install_github()
+devtool::install_github()
+``` 
+It has only been tested on Ubuntu 16.04. 
+
+# TODO:
+- Either refer to the vignette or bring its content here. I think here would be better, with README.Rmd readme.
 
 # Issues
 - **pkg descrption** 
 - **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
- - apply theta_complement?
+- check package docs
+- **apply theta_complement? maybe it could change the results a lot!!** does it just apply to torque?
 - Update description
 - Poner detalles sobre el modelo y su accuracy
 - Add morphology validation and checks. Filters for not suitable. 

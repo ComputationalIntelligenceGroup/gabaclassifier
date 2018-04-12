@@ -1,3 +1,7 @@
+#' Classify an interneruon
+#' @export
+#' @param  file a character. Path to the reconstruction SWC file.
+#' @param layer a character. The layer containing the soma.
 classify_interneuron <- function(file, layer) {
   ok <- check_neuron(file, layer)
   if (!ok) return()
