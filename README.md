@@ -17,6 +17,7 @@
 
 # Issues
 - Update description
+- Poner detalles sobre el modelo y su accuracy
 - **Quitar metadata de aqui, tb por el asunto de licencia**
 - NeuroSTR: the expanded path bug
 - Add morphology validation and checks. Filters for not suitable. 

@@ -42,6 +42,7 @@ It has only been tested on Ubuntu 16.04.
 # Input 
 - A SWC/**ASC/DAT** reconstruction of a neuron morphology
 - The layer containing that cell [optional]  [**not done yet**]
+- Must not be layer 1, only 23. 
 
 The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks.
   
