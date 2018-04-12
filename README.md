@@ -7,11 +7,16 @@
 
 # notes:
 
+# INSTALL 
+- DEPENDS ON PKG neurostrplus and neurostr. 
+- Intstall those via github 
+
 # var names identical for modelling to be possible
   # **fun** <- 'list_branch_usable_measures'
   # not relevant. extra columns do no harm.
 
 # Issues
+- Update description
 - **Quitar metadata de aqui, tb por el asunto de licencia**
 - NeuroSTR: the expanded path bug
 - Add morphology validation and checks. Filters for not suitable. 
