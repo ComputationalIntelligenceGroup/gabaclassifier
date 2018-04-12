@@ -50,24 +50,15 @@ The output is one of the following type labels:
 Chandelier, Martinotti, ...  It is simple to use.  **With function and abbrevs**   
 
 # Details  
-The class if classified into on of the following types. That is, considered the most likely out of those.  The layer information corresponds to male rat ... somatosensory cortex.  It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks. Not all morphologies are valid and basic checks are performed.  If it is not indeed an interneuron, and so on. Checks:  has axon and dendrites, attached to soma, length > 3000 and so on. Both at training and clasification.
+gabaclassifier will classify any neuronal recontruction that passes basic reconstruction quality checks
+ That is, considered the most likely out of those.  The layer information corresponds to male rat ... somatosensory cortex.  It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks. Not all morphologies are valid and basic checks are performed.  If it is not indeed an interneuron, and so on. Checks:  has axon and dendrites, attached to soma, length > 3000 and so on. Both at training and clasification.
 
 ```{r}
 
 ```
- 
+It will provide a classification for any output that passes that. So, if you pass a pyramidal neuron, it will slitt output a classification. Also, since it was trained with specific rat cells (see below), it might not be very correct with others. 
   
 # Model 
-
-X.. cells from L23 to L6...
-
-A random forest trained on **650** ...  The cells were classified into Ch, MC, by the Markam laboratory. 
-
-- length? flat z? repetitions? 
-- check apical? makes any sense? 
-- minimum number of dendrites? that soma is present? 
-
-An one-versus-all combination of random forest models provides somewhat better models for under-represented types. The accuracy is 72%. **Show the confusion matrix.**
-The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    
-The ids of the cells are provided in ...
+  
+The model is  forest (**citation**) trained on **650** interneurons. The cells were L23 to L6...interneurons from the Markam laboratory.   The ids of the cells are provided in ...  The accuracy is 72%. **Show the confusion matrix.** 
 
