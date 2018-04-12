@@ -1,5 +1,5 @@
 classify_interneuron <- function(file, layer) {
-  quantified <- neurostrr::quantify_gaba(file, layer, get_layer_thickness_mean(),  get_layer_thickness_sd())
+  quantified <- neurostrplus::quantify_gaba(file, layer, get_layer_thickness_mean(),  get_layer_thickness_sd())
   # make it a data frame?
   quantified <- vector2dataframe(quantified)
   model <- gabaclassifier:::model
