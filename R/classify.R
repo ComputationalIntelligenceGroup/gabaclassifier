@@ -1,15 +1,14 @@
 classify_interneuron<- function(file, layer) {
   db <- compute_features(file, layer)
+  quantified <- neurostrr::quantify_gaba(file, layer, thickness,  thickness_sd)
+  # make it a data frame?
   model <- gabaclassifier:::model
   predict(model, db)
 }
-# classify <- function(file) {
-#   # read swc. I need neurostr for this?
-#   # call neurostr to get some output. just pass it the path. here i am using the neurostr executable files. so, one would need them installed.
-#     # i can also have the neurostr executables as r functions that do call a lot of neurostr functions. thus, executables are not so much needed with R.
-#   # on the output from neurostr, add additional variables with my own code.
-#   # finally, once the input is obtained, use the predict method of the final model. get the type.
-# }
+
+# TODO: standardize the vars? irrelevant for RF but generally possibly OK.
+# TODO: try ovo or similar
+
 # file = '~/test-file.swc'
 # classify(file)
 # # wd <- getwd()
