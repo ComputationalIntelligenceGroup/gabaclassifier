@@ -28,3 +28,11 @@ get_layers_thickness <- function() {
   stopifnot(sum(thickness$thickness) == 2082)
   as.data.frame(thickness)
 }
+get_layer_thickness_mean <- function() {
+  thick <- get_layers_thickness()
+  setNames(thick$thickness, thick$layer)
+}
+get_layer_thickness_sd <- function() {
+  thick <- get_layers_thickness()
+  setNames(thick$thickness_sd, thick$layer)
+}

@@ -1,9 +1,16 @@
-classify_interneuron<- function(file, layer) {
-  db <- compute_features(file, layer)
-  quantified <- neurostrr::quantify_gaba(file, layer, thickness,  thickness_sd)
+classify_interneuron <- function(file, layer) {
+  quantified <- neurostrr::quantify_gaba(file, layer, get_layer_thickness_mean(),  get_layer_thickness_sd())
   # make it a data frame?
+  quantified <- vector2dataframe(quantified)
   model <- gabaclassifier:::model
-  predict(model, db)
+  predict(model, quantified)
+}
+vector2dataframe <- function(named_vector) {
+  # check has names and dim NULL
+  df <- t(data.frame(named_vector))
+  rownames(df) <- NULL
+  colnames(df) <- names(named_vector)
+  df
 }
 
 # TODO: standardize the vars? irrelevant for RF but generally possibly OK.
