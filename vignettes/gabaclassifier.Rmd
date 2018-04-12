@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # Overview 
 
-`gabaclassifier` classifies a given neuronal morphology into of of the following types: 
+`gabaclassifier` classifies a given neuronal morphology into one of **eight** types, such as Chandelier or Martinotti. The following classifies cell C030502A as a nest basket cell.
 
 ```{r, message=FALSE}
 library(gabaclassifier) 
@@ -26,29 +26,41 @@ file <- system.file('extdata', 'C030502A.swc', package = 'gabaclassifier')
 classify_interneuron(file = file, layer  = '23')
 ```
 
+The mapping from the abbreviated output to the full type name is 
+```{r} 
+# full_class_name('NBC')
+```
+names. have it somewhere for sure.
+  
+# Usage
+Cells are classified with the `classify_interneuron` function. The inputs are
 
+- A path to a SWC reconstruction of a neuron morphology
+- The layer containing that cell  
 
-# Input and output 
-- A SWC/**ASC/DAT** reconstruction of a neuron morphology
-- The layer containing that cell [optional]  [**not done yet**]
-- Must not be layer 1, only 23. 
+The model has only been trained with layer L2/3 to layer L6 interneurons and thus interneurons from those layers are allowed as input to `classify_interneuron`.  
+```{r}
+# show error Try with l1. 
+```
+ 
+The output is one of the following type labels:
+```{r}
+# do this code inlune 
+```
+Chandelier, Martinotti, ...  It is simple to use.  **With function and abbrevs**   
 
-The layer information corresponds to male rat ... somatosensory cortex. If the cells corresponds to very different laminar distribution data, then the layer should be omitted and related morphometrics will not be computed. It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks.
+# Details  
+The class if classified into on of the following types. That is, considered the most likely out of those.  The layer information corresponds to male rat ... somatosensory cortex.  It is important that the morphology is of sufficient quality, as `gabaclassifier` performs only basic checks. Not all morphologies are valid and basic checks are performed.  If it is not indeed an interneuron, and so on. Checks:  has axon and dendrites, attached to soma, length > 3000 and so on. Both at training and clasification.
 
-Try with l1. Only support L2/3 to L6 interneurons so only those layers are allowed.  
+```{r}
 
-The class if classified into on of the following types. That is, considered the most likely out of those. 
-
-Chandelier, Martinotti, ...  It is simple to use. 
-
-# Details
-
+```
+ 
   
 # Model 
 
 X.. cells from L23 to L6...
 
-## Data 
 A random forest trained on **650** ...  The cells were classified into Ch, MC, by the Markam laboratory. 
 
 - length? flat z? repetitions? 
@@ -57,17 +69,5 @@ A random forest trained on **650** ...  The cells were classified into Ch, MC, b
 
 An one-versus-all combination of random forest models provides somewhat better models for under-represented types. The accuracy is 72%. **Show the confusion matrix.**
 The data and model building is explained in paper...Try oversampling? Not easy in multiclass.  No feature selection currently (OK with random forest).    
+The ids of the cells are provided in ...
 
-TODO: full_class function. names. have it somewhere for sure.
-
-# Usage 
-The only relevant functions is the `classify_interneuron`. The layer and path to file. The outut types are ... 
-
-Allowed values for layer are...(character)
-The types are MC = martinotti etc. ...   
-
-Not all morphologies are valid and basic checks are performed.  Thus, 
-```{r}
-
-```
- 
