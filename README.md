@@ -5,6 +5,7 @@
 - documentation of the process  
 - layer cannot be optional because it is in the models already!! nothing is optional. 
 
+
 # notes:
 
 # INSTALL 
@@ -16,6 +17,7 @@
   # not relevant. extra columns do no harm.
 
 # Issues
+ - apply theta_complement?
 - Update description
 - Poner detalles sobre el modelo y su accuracy
 - **Quitar metadata de aqui, tb por el asunto de licencia**
