@@ -15,7 +15,6 @@ knitr::opts_chunk$set(
 ```
 
 # Issues
-- **pkg descrption** 
 - **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
 - **apply theta_complement? maybe it could change the results a lot!!** does it just apply to torque?
 - Poner detalles sobre el modelo y su accuracy   
@@ -72,6 +71,6 @@ A cell will be classified as long as it   1. Passes basics morphology quality su
 `gabaclassifier` will classify any neuronal recontruction that passes the above criteria () , assigning it into one of the mentioned classes. Since it was trained with  male rat ... somatosensory cortex (see below), passing other species, area etc. interneurons may result in poorer prediction.  
   
 # Model  
-The model is random forest (**citation**) trained on **650** hind-limb somatosensory cortex interneurons from two-week-old male Wistar rats reconcsturcted by the Markam laboratory (**cite**). The ids of the cells are provided in ... while laminar metadata is available in ... The cells came from layers L2/3, L4, L5, or L6 cell and fullfilled morphology quality criteria listed above. 
+The classification is based on a model trained in a supervised fashion. Namely the underlying model is a random forest with X trees and  The model is random forest (**citation**) trained on **650** hind-limb somatosensory cortex interneurons from two-week-old male Wistar rats reconcsturcted by the Markam laboratory (**cite**). The ids of the cells are provided in ... while laminar metadata is available in ... The cells came from layers L2/3, L4, L5, or L6 cell and fullfilled morphology quality criteria listed above. 
 
 The 10-fold cross-validated accuracy of the model is XX%. The best predicted types are ChC, .. while types such as BTC and abv are herder to detec: **Show the confusion matrix.**  
