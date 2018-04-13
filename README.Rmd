@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 # Issues
-- **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
 - **apply theta_complement? maybe it could change the results a lot!!** does it just apply to torque?
+- **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
 - Poner detalles sobre el modelo y su accuracy   
 
 # Overview 

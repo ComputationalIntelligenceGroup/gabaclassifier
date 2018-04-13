@@ -18,6 +18,8 @@ vector2dataframe <- function(named_vector) {
   colnames(df) <- names(named_vector)
   df
 }
+#' Checks if the morphology is adequate
+#' @export
 check_neuron <- function(file, layer) {
   check <- neurostrplus::check_reconstruction(file, layer)
   pass <- all(check$pass)
@@ -37,7 +39,4 @@ get_type_names <- function() {
 #' @export
 get_type_codes <- function() {
    c( "BTC", "ChC", "DBC", "LBC", "MC", "NBC", "SBC")
-}
-selected_types <- function() {
-  get_type_codes()
 }
