@@ -55,12 +55,19 @@ The model has been trained with layer L2/3 to layer L6 interneurons and thus onl
 classify_interneuron(file = file, layer  = '1')
 ```
  
-Also, `gabaclassifier` will only classify morphology reconstruction that pass the following quality checks:
+`gabaclassifier` will only classify a morphology reconstruction that passes the following quality checks:
 
 - Has both axon and dendrites 
 - The axon is not interrupted
+- Has a soma
 - Nerites are attached to soma 
-- Axonal length > 3000 micrometers. 
+- Axonal length > 3000 micrometers 
+
+So, it will not classify the following cell:
+```{r}  
+file <- system.file('extdata', 'C170501A2.swc', package = 'gabaclassifier')
+classify_interneuron(file = file, layer  = '4')
+```
 
 The underlying model has been trained and tested with rat somatosensory cortex interneurons (see below). Classifying interneurons from other species, brain area etc. may be less reliable.
   
