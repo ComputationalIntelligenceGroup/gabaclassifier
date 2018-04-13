@@ -1,8 +1,8 @@
----
-output:
-  md_document:
-    variant: markdown_github
----
+# ---
+# output:
+#   md_document:
+#     variant: markdown_github
+# ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -22,25 +22,20 @@ knitr::opts_chunk$set(
 
 # Overview 
 
-`gabaclassifier` classifies a given neuronal morphology into one of **eight** types, such as Chandelier or Martinotti. The following classifies cell C030502A as a nest basket cell.
+`gabaclassifier` classifies a given neuronal morphology into one of eight types (see below), such as Chandelier or Martinotti. 
+
+For example, it classifies cell C030502A as a nest basket cell.
 
 ```{r, message=FALSE}
 library(gabaclassifier) 
 file <- system.file('extdata', 'C030502A.swc', package = 'gabaclassifier')
 classify_interneuron(file = file, layer  = '23')
-```
+``` 
 
-The mapping from the abbreviated output to the full type name is 
-```{r} 
-# full_class_name('NBC')
-```
-names. have it somewhere for sure. 
-
-The output is one of the following type labels:
-```{r}
-# do this code inlune 
-```
-Chandelier, Martinotti, ...  It is simple to use.  **With function and abbrevs**   
+The output is short code for the type name. The codes for the eight types are: 
+```{r, echo=FALSE}
+knitr::kable(data.frame(short = get_type_codes(), long = get_type_names())  )
+```  
 
 # Installing  
 
@@ -66,28 +61,17 @@ The model has been trained with layer L2/3 to layer L6 interneurons and thus onl
 classify_interneuron(file = file, layer  = '1')
 ```
  
-A cell will be classified as long as it 
+Also, `gabaclassifier` will only classify morphology reconstruction that pass the following quality checks:
 
-1. An L2/3, L4, L5, or L6 cell
-1. Passes basics morphology quality such as 
-It will not classify if some problems with morphology.  
-
-```{r}
-
-```
-
-Checks:  
 - has axon and dendrites, 
 - attached to soma, 
-- length > 3000 and so on. Both at training and clasification.
+- length > 3000 and so on. 
 
+A cell will be classified as long as it   1. Passes basics morphology quality such as  
 
-# Details  
-gabaclassifier will classify any neuronal recontruction that passes the above criteria, assigning it into one of the mentioned classes. Since it was trained with  male rat ... somatosensory cortex (see below), passing other species, area etc. interneurons may result in poorer prediction. 
-     
+`gabaclassifier` will classify any neuronal recontruction that passes the above criteria () , assigning it into one of the mentioned classes. Since it was trained with  male rat ... somatosensory cortex (see below), passing other species, area etc. interneurons may result in poorer prediction.  
   
-# Model 
-  
-The model is random forest (**citation**) trained on **650** interneurons. The cells were L23 to L6...interneurons from the Markam laboratory. These were male ...  The ids of the cells are provided in ... while laminar metadata is available in .  
+# Model  
+The model is random forest (**citation**) trained on **650** hind-limb somatosensory cortex interneurons from two-week-old male Wistar rats reconcsturcted by the Markam laboratory (**cite**). The ids of the cells are provided in ... while laminar metadata is available in ... The cells came from layers L2/3, L4, L5, or L6 cell and fullfilled morphology quality criteria listed above. 
 
 The 10-fold cross-validated accuracy of the model is XX%. The best predicted types are ChC, .. while types such as BTC and abv are herder to detec: **Show the confusion matrix.**  

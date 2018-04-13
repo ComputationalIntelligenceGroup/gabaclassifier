@@ -27,3 +27,17 @@ check_neuron <- function(file, layer) {
   }
   pass
 }
+#' Type names
+#' @export
+get_type_names <- function() {
+   c("Bitufted cell" , 'Chandelier cell', "Double bouquet cell", "Large basket cell", 'Martinotti cell', "Nest basket cell", "Small basket cell")
+}
+
+#' Type codes
+#' @export
+get_type_codes <- function() {
+   c( "BTC", "ChC", "DBC", "LBC", "MC", "NBC", "SBC")
+}
+selected_types <- function() {
+  get_type_codes()
+}

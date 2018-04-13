@@ -76,6 +76,17 @@ A cell will be classified as long as it
 1.  An L2/3, L4, L5, or L6 cell
 2.  Passes basics morphology quality such as It will not classify if some problems with morphology.
 
+<!-- -->
+
+    #>   short                long
+    #> 1   BTC       Bitufted cell
+    #> 2   ChC     Chandelier cell
+    #> 3   DBC Double bouquet cell
+    #> 4   LBC   Large basket cell
+    #> 5    MC     Martinotti cell
+    #> 6   NBC    Nest basket cell
+    #> 7   SBC   Small basket cell
+
 Checks:
 - has axon and dendrites, - attached to soma, - length &gt; 3000 and so on. Both at training and clasification.
 
