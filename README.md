@@ -1,16 +1,10 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Issues
-======
-
--   **pkg descrption**
--   **Maybe also include the training functions here, also the trainig dataset, with the list of used cells.**
--   **apply theta\_complement? maybe it could change the results a lot!!** does it just apply to torque?
--   Poner detalles sobre el modelo y su accuracy
-
 Overview
 ========
 
-`gabaclassifier` classifies a given neuronal morphology into one of **eight** types, such as Chandelier or Martinotti. The following classifies cell C030502A as a nest basket cell.
+`gabaclassifier` classifies a given neuronal morphology into one of eight types (see below), such as Chandelier or Martinotti.
+
+For example, it classifies cell C030502A as a nest basket cell.
 
 ``` r
 library(gabaclassifier) 
@@ -21,21 +15,17 @@ classify_interneuron(file = file, layer  = '23')
 #> Levels: BTC ChC DBC LBC MC NBC SBC
 ```
 
-The mapping from the abbreviated output to the full type name is
+The output is short code for the type name. The codes for the eight types are:
 
-``` r
-# full_class_name('NBC')
-```
-
-names. have it somewhere for sure.
-
-The output is one of the following type labels:
-
-``` r
-# do this code inlune 
-```
-
-Chandelier, Martinotti, ... It is simple to use. **With function and abbrevs**
+| short | long                |
+|:------|:--------------------|
+| BTC   | Bitufted cell       |
+| ChC   | Chandelier cell     |
+| DBC   | Double bouquet cell |
+| LBC   | Large basket cell   |
+| MC    | Martinotti cell     |
+| NBC   | Nest basket cell    |
+| SBC   | Small basket cell   |
 
 Installing
 ==========
@@ -44,9 +34,9 @@ Installing
 
 ``` r
 # install.package('devtools')
-devtools::install_github("neurostr")
-devtools::install_github("neurostrplus")
-devtools::install_github("gabaclassifier") 
+devtools::install_github("ComputationalIntelligenceGroup/neurostrr")
+devtools::install_github("ComputationalIntelligenceGroup/neurostrplus")
+devtools::install_github("ComputationalIntelligenceGroup/gabaclassifier") 
 ```
 
 These packages have only been tested on Ubuntu 16.04.
@@ -59,7 +49,7 @@ Cells are classified with the `classify_interneuron` function. The inputs are
 -   A path to a SWC reconstruction of a neuron morphology
 -   The layer containing the cell's soma
 
-The path must be fully expanded, that is `/home/user/neuron.swc` while work while `~/neuron.swc` will not.
+The path must be fully expanded, that is `/home/user/neuron.swc` will work while `~/neuron.swc` will not.
 
 The model has been trained with layer L2/3 to layer L6 interneurons and thus only interneurons from those layers are allowed as input to `classify_interneuron`.
 
@@ -71,33 +61,42 @@ classify_interneuron(file = file, layer  = '1')
 #> NULL
 ```
 
-A cell will be classified as long as it
+`gabaclassifier` will only classify a morphology reconstruction that passes the following quality checks:
 
-1.  An L2/3, L4, L5, or L6 cell
-2.  Passes basics morphology quality such as It will not classify if some problems with morphology.
+-   Has both axon and dendrites
+-   The axon is not interrupted
+-   Has a soma
+-   Nerites are attached to soma
+-   Axonal length &gt; 3000 micrometers
 
-<!-- -->
+So, it will not classify the following cell:
 
-    #>   short                long
-    #> 1   BTC       Bitufted cell
-    #> 2   ChC     Chandelier cell
-    #> 3   DBC Double bouquet cell
-    #> 4   LBC   Large basket cell
-    #> 5    MC     Martinotti cell
-    #> 6   NBC    Nest basket cell
-    #> 7   SBC   Small basket cell
+``` r
+file <- system.file('extdata', 'C170501A2.swc', package = 'gabaclassifier')
+classify_interneuron(file = file, layer  = '4')
+#> The following checks have failed:
+#>                     name  pass
+#> 4 Has axon and dendrites FALSE
+#> 5            Single axon FALSE
+#> 6    Axon > 3000 microns FALSE
+#> NULL
+```
 
-Checks:
-- has axon and dendrites, - attached to soma, - length &gt; 3000 and so on. Both at training and clasification.
-
-Details
-=======
-
-gabaclassifier will classify any neuronal recontruction that passes the above criteria, assigning it into one of the mentioned classes. Since it was trained with male rat ... somatosensory cortex (see below), passing other species, area etc. interneurons may result in poorer prediction.
+The underlying model has been trained and tested with rat somatosensory cortex interneurons (see below). Classifying interneurons from other species, brain area etc. may be less reliable.
 
 Model
 =====
 
-The model is random forest (**citation**) trained on **650** interneurons. The cells were L23 to L6...interneurons from the Markam laboratory. These were male ... The ids of the cells are provided in ... while laminar metadata is available in .
+The classification is based on a model trained in a supervised fashion. The model is a random forest with 2000 trees trained on 503 cells with 74 morphometrics for each. The morphometrics were computed with the `neuorstrplus` and `neurostr` packages. All cells are hind-limb somatosensory cortex interneurons from two-week-old male Wistar rats reconcstructed by the Markam laboratory. The ids of the cells are available with `gabaclassifier:::cell_ids`. The cells are from layers L2/3, L4, L5, or L6 cell and fullfill the above-listed morphology quality criteria.
 
-The 10-fold cross-validated accuracy of the model is XX%. The best predicted types are ChC, .. while types such as BTC and abv are herder to detec: **Show the confusion matrix.**
+The 10-fold cross-validated accuracy of the model is 0.7015649. The types with highest sensitivity are Martinotti, Large basket, and nest basket. The model in unable to recognizes bitufted cells.
+
+|     |  BTC|  ChC|  DBC|  LBC|   MC|  NBC|  SBC|  sensitivity|
+|-----|----:|----:|----:|----:|----:|----:|----:|------------:|
+| BTC |    5|    0|    1|   17|    8|    4|    1|        0.139|
+| ChC |    0|   11|    0|    1|    0|    0|    6|        0.611|
+| DBC |    0|    1|   22|    4|    5|    0|    0|        0.688|
+| LBC |    3|    0|    1|  118|   12|   19|    4|        0.752|
+| MC  |    1|    0|    0|   15|  100|    1|    1|        0.847|
+| NBC |    0|    0|    0|   22|    0|   65|    4|        0.714|
+| SBC |    0|    1|    1|    7|    3|    4|   35|        0.686|
