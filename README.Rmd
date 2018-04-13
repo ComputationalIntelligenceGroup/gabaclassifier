@@ -31,16 +31,14 @@ The output is short code for the type name. The codes for the eight types are:
 knitr::kable(data.frame(short = get_type_codes(), long = get_type_names())  )
 ```  
 
-# Installing  
-
-**FIX THE INSTALL LINK!!! ADD GITHUB USER. Also for other pkgs**
+# Installing   
 
 `gabaclassifier` requires `neurostr` and `neurostrplus` to be installed. The following installs all three packages (install the `devtools` package with `install.package('devtools')` if you don't have it):
 ```{r, eval = FALSE}
 # install.package('devtools')
-devtools::install_github("neurostr")
-devtools::install_github("neurostrplus")
-devtools::install_github("gabaclassifier") 
+devtools::install_github("ComputationalIntelligenceGroup/neurostrr")
+devtools::install_github("ComputationalIntelligenceGroup/neurostrplus")
+devtools::install_github("ComputationalIntelligenceGroup/gabaclassifier") 
 ```   
 These packages have only been tested on Ubuntu 16.04.    
 
@@ -59,13 +57,12 @@ classify_interneuron(file = file, layer  = '1')
  
 Also, `gabaclassifier` will only classify morphology reconstruction that pass the following quality checks:
 
-- has axon and dendrites, 
-- attached to soma, 
-- length > 3000 and so on. 
+- Has both axon and dendrites 
+- The axon is not interrupted
+- Nerites are attached to soma 
+- Axonal length > 3000 micrometers. 
 
-**A cell will be classified as long as it   1. Passes basics morphology quality such as**
-
-`gabaclassifier` will classify any neuronal recontruction that passes the above criteria () , assigning it into one of the mentioned classes. Since it was trained with  male rat ... somatosensory cortex (see below), passing other species, area etc. interneurons may result in poorer prediction.  
+The underlying model has been trained and tested with rat somatosensory cortex interneurons (see below). Classifying interneurons from other species, brain area etc. may be less reliable.
   
 # Model  
 The classification is based on a model trained in a supervised fashion. The model is a random forest with 2000 trees trained on `r length(gabaclassifier:::cell_ids)` cells with `r length(gabaclassifier:::features)` morphometrics for each. The morphometrics were computed with the `neuorstrplus` and `neurostr` packages. All cells are hind-limb somatosensory cortex interneurons from two-week-old male Wistar rats reconcstructed by the Markam laboratory. The ids of the cells are available with `gabaclassifier:::cell_ids`. The cells are from layers L2/3, L4, L5, or L6 cell and fullfill the above-listed morphology quality criteria.  
