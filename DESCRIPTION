@@ -4,6 +4,7 @@ Title: Classifies interneuron morphologies into established types.
 Version: 0.1.0
 Author: Mihaljevic Bojan
 Depends: randomForest 
+Imports: neurostr, neurostrplus
 Maintainer: Mihaljevic Bojan <bmihaljevic@fi.upm.es>
 Description: Classifies interneuron morphologies into established types. 
 License: GPL-3 + file LICENSE
