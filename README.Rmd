@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   
 # Overview 
 
-`gabaclassifier` classifies a given neuronal morphology into one of eight types (see below), such as Chandelier or Martinotti. 
+`gabaclassifier` classifies a given neuronal morphology into one of seven types (see below), such as Chandelier or Martinotti. 
 
 For example, it classifies cell C030502A as a nest basket cell.
 
@@ -26,16 +26,18 @@ file <- system.file('extdata', 'C030502A.swc', package = 'gabaclassifier')
 classify_interneuron(file = file, layer  = '23')
 ``` 
 
-The output is short code for the type name. The codes for the eight types are: 
+The output is short code for the type name. The codes for the seven types are: 
 ```{r, echo=FALSE}
 knitr::kable(data.frame(short = get_type_codes(), long = get_type_names())  )
 ```  
 
+See [this paper](https://www.ncbi.nlm.nih.gov/pubmed/15378039) for descriptions of the types.
+
 # Installing   
 
-`gabaclassifier` requires `neurostr` and `neurostrplus` to be installed. The following installs all three packages (install the `devtools` package with `install.package('devtools')` if you don't have it):
+`gabaclassifier` requires `neurostr` and `neurostrplus` to be installed. The following installs all three packages (install the `devtools` package with `install.packages('devtools')` if you don't have it):
 ```{r, eval = FALSE}
-# install.package('devtools')
+# install.packages('devtools')
 devtools::install_github("ComputationalIntelligenceGroup/neurostrr")
 devtools::install_github("ComputationalIntelligenceGroup/neurostrplus")
 devtools::install_github("ComputationalIntelligenceGroup/gabaclassifier") 
@@ -60,7 +62,7 @@ classify_interneuron(file = file, layer  = '1')
 - Has both axon and dendrites 
 - The axon is not interrupted
 - Has a soma
-- Nerites are attached to soma 
+- Neurites are attached to soma 
 - Axonal length > 3000 micrometers 
 
 So, it will not classify the following cell:
